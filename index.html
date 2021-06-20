@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+</head>
+
+<body>
+
+	
+<h1 style="text-align: center">配置计算器（LCC-S专用|HUAYU WPT）</h1>
+<h3 style="text-align: center">当使用半桥逆变时，输入电压Vi为直流母线电压的一半</h3>
+
+	
+<form name="FREQ">
+<table width="400" border="3" cellpadding="5" bgcolor="#FFFFFF" id="table1" bordercolor="#C0C0C0" align="center" style="border-collapse: separate;">
+  <tbody>
+	<tr>
+	  <td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400">F(谐振频率)</strong></font> (Hz)<br>
+		<input name="frequency" size="20"></td>
+	  <td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> L2(发射电感) </strong></font>(uH)<br>
+		<input name="L2" size="20"></td>
+	<td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> M(互感) </strong></font>(uH)<br>
+	<input name="M" size="20"></td>
+	<td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> V(电池电压) </strong></font>(V)<br>
+	<input name="V" size="20"></td>
+		</tr>
+	  <tr>
+	<td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> I(充电电流) </strong></font>(A)<br>
+	<input name="I" size="20"></td>
+	 
+	
+	
+	<td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> Vi(输入电压) </strong></font>(V)<br>
+	<input name="Vi" size="20"></td>
+	<td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> η(效率) </strong></font>(x100%)<br>
+	<input name="eta" size="20"></td>
+	<td bgcolor="#99BBDD"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> <strong style="font-weight: 400"> L3(接收电感) </strong></font>(uH)<br>
+	<input name="L3" size="20"></td>
+		</tr>
+	  <tr>
+	  <td>L1(补偿电感)(uH)<br>
+		<input name="L1" size="20"></td>
+		<td>C1(并联电容)(nF)<br>
+		<input name="C1" size="20"></td>
+		<td>C2(串联电容)(nF)<br>
+		<input name="C2" size="20"></td>
+		 <td>C3(接收串联电容)(nF)<br>
+		<input name="C3" size="20"></td>
+		</tr>
+	  <tr>
+	  <td valign="bottom" halign="right"><input type="button" value="开始计算" onclick="w0=2*3.14159*FREQ.frequency.value;RL=FREQ.V.value/FREQ.I.value;w0M=w0*0.000001*FREQ.M.value;ZO=w0M*w0M*3.141592*3.141592/8/RL;P=FREQ.V.value*FREQ.I.value/FREQ.eta.value;io=Math.sqrt(P/ZO);FREQ.L1.value=1000000*FREQ.Vi.value/io/w0;FREQ.C1.value=1000000000*1/w0/w0/(FREQ.L1.value/1000000);FREQ.C2.value=1000000000*1/w0/(w0*0.000001*FREQ.L2.value-w0*0.000001*FREQ.L1.value);FREQ.C3.value=1000000000*1/(w0*w0*FREQ.L3.value*0.000001)"></td>
+	</tr>
+  </tbody>
+</table>
+</form>
+	<table width="33%" border="0" align="center">
+  <tbody>
+    <tr>
+      <td><img src="_image/lcc-s.png" width="600" height="300" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
